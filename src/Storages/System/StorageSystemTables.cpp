@@ -245,7 +245,7 @@ public:
     String getName() const override { return "Tables"; }
 
 protected:
-    NameToNameMap getViewParamters(const StorageMetadataPtr & metadata_snapshot)
+    NameToNameMap getSelectParamters(const StorageMetadataPtr & metadata_snapshot)
     {
         const SelectQueryDescription & query_description = metadata_snapshot->getSelectQuery();
         ASTPtr inner_query = query_description.inner_query;
@@ -263,7 +263,7 @@ protected:
             {
                 StorageMetadataPtr metadata_snapshot = table->getInMemoryMetadataPtr();
 
-                NameToNameMap query_params = getViewParamters(metadata_snapshot);
+                NameToNameMap query_params = getSelectParamters(metadata_snapshot);
                 if (!query_params.empty())
                 {
                     Array changes;
