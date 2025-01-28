@@ -1,5 +1,9 @@
 DROP TABLE IF EXISTS raw_data;
 
+DROP TABLE IF EXISTS parametrized_view_one_param;
+
+DROP TABLE IF EXISTS parametrized_view_multiple_params;
+
 CREATE TABLE raw_data (id UInt32, data String) ENGINE = MergeTree ORDER BY id;
 
 CREATE VIEW parametrized_view_one_param AS SELECT * FROM raw_data WHERE id = {id:UInt32};
